@@ -1,0 +1,61 @@
+#include "pipex.h"
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+
+char	*ft_strnstr(const char *big, const char *lil, size_t len)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (lil[i] == '\0')
+		return ((char *)big);
+	while (big[i] != '\0' && i < len)
+	{
+		j = 0;
+		while (big[i + j] == lil[j] && i + j < len)
+		{
+			if (lil[j + 1] == '\0')
+				return ((char *)&big[i]);
+			j++;
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	int		z1;
+	int		z2;
+	char	*str;
+
+	if (!s1 || !s2)
+		return (NULL);
+	z1 = ft_strlen(s1);
+	z2 = ft_strlen(s2);
+	str = malloc((z1 + z2 + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j] != '\0')
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
+}
