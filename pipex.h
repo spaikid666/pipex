@@ -8,7 +8,7 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 
-# define ERROR_MSG "Expected: ./pipex <infile> <cmd> <cmd> <outfile>\n"
+# define INVALID_ARGS "Expected: ./pipex <infile> <cmd> <cmd> <outfile>\n"
 
 void	ft_execute_cmd(char *argv, char **envp);
 char	*ft_find_path(char *cmd, char **envp);
