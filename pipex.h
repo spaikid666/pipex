@@ -19,14 +19,15 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <sys/wait.h>
+# include <sys/resource.h>
 
 # define INVALID_ARGS "Expected: ./pipex <infile> <cmd> <cmd> <outfile>\n"
 
-void	ft_execute_cmd(char *argv, char **envp);
-char	*ft_find_path(char *cmd, char **envp);
 size_t	ft_strlen(const char *s);
-char	*ft_strnstr(const char *big, const char *lil, size_t len);
+void	ft_free_matrix(char **matrix);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
+void	ft_execute_cmd(char *argv, char **envp);
 
 #endif

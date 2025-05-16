@@ -22,28 +22,6 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strnstr(const char *big, const char *lil, size_t len)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	if (lil[i] == '\0')
-		return ((char *)big);
-	while (big[i] != '\0' && i < len)
-	{
-		j = 0;
-		while (big[i + j] == lil[j] && i + j < len)
-		{
-			if (lil[j + 1] == '\0')
-				return ((char *)&big[i]);
-			j++;
-		}
-		i++;
-	}
-	return (NULL);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		i;
@@ -70,4 +48,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		str[i++] = s2[j++];
 	str[i] = '\0';
 	return (str);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (i == n)
+		return (0);
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+	{
+		if ((i + 1) == n)
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

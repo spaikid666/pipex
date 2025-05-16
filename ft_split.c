@@ -12,16 +12,13 @@
 
 #include "pipex.h"
 
-static void	ft_free_matrix(char **matrix, int n)
+void	ft_free_matrix(char **matrix)
 {
 	int	i;
 
 	i = 0;
-	while (i < n)
-	{
-		free(matrix[i]);
-		i++;
-	}
+	while (matrix[i])
+		free(matrix[i++]);
 	free(matrix);
 }
 
@@ -61,7 +58,7 @@ static char	**ft_fill(char const *s, char c, int nw, char **matrix)
 			i++;
 		matrix[j] = ft_allocateword(s, start, i);
 		if (!matrix[j])
-			return (ft_free_matrix(matrix, j), NULL);
+			return (ft_free_matrix(matrix), NULL);
 		j++;
 	}
 	matrix[j] = NULL;
