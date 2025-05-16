@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asalguer <asalguer@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/16 14:13:03 by asalguer          #+#    #+#             */
+/*   Updated: 2025/05/16 14:13:03 by asalguer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 static void	child_process(int *fd, char **argv, char **envp)
@@ -8,18 +20,18 @@ static void	child_process(int *fd, char **argv, char **envp)
 	if (fd_in == -1)
 	{
 		perror("Error, couldn't open input file");
-		return(exit(1));
+		return (exit(1));
 	}
-	if (dup2(fd_in, STDIN_FILENO)== -1 || dup2(fd[1], STDOUT_FILENO) == -1)
+	if (dup2(fd_in, STDIN_FILENO) == -1 || dup2(fd[1], STDOUT_FILENO) == -1)
 	{
 		perror("Error in setting file descriptor in the child");
-		return(exit(1));
+		return (exit(1));
 	}
 	close(fd[0]);
 	if (argv[2] == NULL || argv[2][0] == '\0')
 	{
 		perror("Error, the command is invalid");
-		return(exit(1));
+		return (exit(1));
 	}
 	ft_execute_cmd(argv[2], envp);
 }
@@ -38,8 +50,8 @@ static void	parent_process(int *fd, char **argv, char **envp)
 	}
 	if (dup2(fd[0], STDIN_FILENO) == -1 || dup2(fd_out, STDOUT_FILENO) == -1)
 	{
-		perror("Error in setting the file descriptor in the parent"); 
-		return(exit(1));
+		perror("Error in setting the file descriptor in the parent");
+		return (exit(1));
 	}
 	close(fd[1]);
 	ft_execute_cmd(argv[3], envp);

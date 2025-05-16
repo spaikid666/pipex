@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asalguer <asalguer@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/16 13:40:38 by asalguer          #+#    #+#             */
+/*   Updated: 2025/05/16 13:40:38 by asalguer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 
 # define PIPEX_H
@@ -16,6 +28,5 @@ size_t	ft_strlen(const char *s);
 char	*ft_strnstr(const char *big, const char *lil, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
-
 
 #endif
