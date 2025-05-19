@@ -28,10 +28,11 @@ static void	child_process(int *fd, char **argv, char **envp)
 	if (dup2(fd[1], STDOUT_FILENO) == -1)
 		return (perror("Error duplicating fd[1] to stdout"), close(fd[1]),
 			exit(1));
-	close(fd[0]);
+	close(fd[1]);
+	close(fd_in);
 	if (argv[2] == NULL || argv[2][0] == '\0')
 	{
-		perror("Error, the command is invalid");
+		write(2, "Error, the command is invalid.\n", 32);
 		return (exit(1));
 	}
 	ft_execute_cmd(argv[2], envp);
@@ -66,7 +67,7 @@ static void	parent_process(int *fd, char **argv, char **envp)
 	close(fd_out);
 	if (!argv[3] || !argv[3][0])
 	{
-		perror("Error, the command is invalid");
+		write(2, "Error, the command is invalid.\n", 32);
 		exit(1);
 	}
 	ft_execute_cmd(argv[3], envp);
@@ -78,7 +79,7 @@ int	main(int argc, char **argv, char **envp)
 	pid_t	pid;
 
 	if (argc != 5)
-		return (perror(INVALID_ARGS), -1);
+		return (write(2, INVALID_ARGS, 50), -1);
 	if (pipe(fd) == -1)
 		return (perror("The pipe creation failed"), -1);
 	pid = fork();

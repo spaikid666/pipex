@@ -48,7 +48,7 @@ static void	execute_cmd(char **cmd, char **envp)
 	if (!path)
 	{
 		ft_free_matrix(cmd);
-		perror("The command wasn't found");
+		write(2, "The command wasn't found.\n", 27);
 		return (exit(127));
 	}
 	if (execve(path, cmd, envp) == -1)
@@ -67,7 +67,7 @@ void	ft_execute_cmd(char *argv, char**envp)
 	cmd = ft_split(argv, ' ');
 	if (!envp || !cmd[0])
 		return (ft_free_matrix(cmd), \
-		perror("The command is invalid"), exit(127));
+		write(2, "The command is invalid.\n", 25), exit(127));
 	if (cmd[0][0] == '/')
 	{
 		if (access(cmd[0], F_OK) == 0)
