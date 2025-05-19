@@ -2,12 +2,9 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+
-	+:+     */
-/*   By: asalguer <asalguer@student.42madrid.com    +#+  +:+
-	+#+        */
-/*                                                +#+#+#+#+#+
-	+#+           */
+/*                                                    +:+ +:+	      +:+     */
+/*   By: asalguer <asalguer@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 14:13:03 by asalguer          #+#    #+#             */
 /*   Updated: 2025/05/16 14:13:03 by asalguer         ###   ########.fr       */
 /*                                                                            */
